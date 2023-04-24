@@ -9,10 +9,10 @@ import java.io.OutputStream;
 
 public class HttpStatusImageDownloader {
 
-    public void downloadStatusImage(int code){
+    public void downloadStatusImage(int code) throws Exception {
         String url = new HttpStatusChecker().getStatusImage(code);
 
-        if (!url.contains("Помилка при запиті на")){
+        if (!url.contains("Errore request for")){
 
             String imagePath = "C:\\goit\\dev\\dev-mod-7\\src\\main\\java\\org\\example\\downloadedPictures\\"+code+".jpg";
 
@@ -34,15 +34,15 @@ public class HttpStatusImageDownloader {
                     outputStream.close();
                     inputStream.close();
 
-                    System.out.println("Зображення з кодом 200 успішно завантажено в файл " + imagePath);
+                    System.out.println("Image with code "+code+" downloaded in " + imagePath);
                 } else {
-                    System.out.println("Помилка при запиті на " + url + ", статус-код: " + statusCode);
+                    System.out.println("There is not image for HTTP status "+code);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        else System.out.println("Завантаження картинки не відбулося: невірний url");
+        else System.out.println("There is not image for HTTP status "+code);
     }
 
 }

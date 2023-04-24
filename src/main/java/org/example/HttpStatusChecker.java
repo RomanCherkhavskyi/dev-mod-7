@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class HttpStatusChecker {
 
-    public String getStatusImage(int code) {
+    public String getStatusImage(int code) throws Exception{
 
         String BASE_URL = "https://http.cat/";
         String url = BASE_URL + code + ".jpg";
@@ -19,10 +19,10 @@ public class HttpStatusChecker {
             if (statusCode == 200){
                 return url;
             }
-            else  return "Помилка при запиті на " + url;
+            else  return "Errore request for " + url;
 
         } catch (IOException e) {
-            return "Помилка при запиті на " + url;
+            return "Errore request for " + url;
         }
     }
 }
