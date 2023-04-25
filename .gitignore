@@ -6,6 +6,4 @@
 HELP.md
 target/
 .DS_Store
-MyDB.mv.db
-MyDB.trace.db
 /downloadedPictures/*
